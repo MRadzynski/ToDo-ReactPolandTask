@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Homepage from './pages/Homepage/Homepage.jsx';
+import AddTodo from './pages/AddTodo/AddTodo.jsx';
 
 const App = () => {
   return (
@@ -15,11 +16,7 @@ const App = () => {
           render={() => <h1>There will be all todo page</h1>}
         />
 
-        <Route
-          exact
-          path="/add-todo"
-          render={() => <h1>There will be add todo page</h1>}
-        />
+        <Route exact path="/add-todo" component={AddTodo} />
 
         <Route
           exact

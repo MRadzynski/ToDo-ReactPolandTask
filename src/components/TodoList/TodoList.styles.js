@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   root: {
-    margin: '3rem 0',
+    margin: '3rem 0 1rem 0',
   },
   card: {
     display: 'flex',
