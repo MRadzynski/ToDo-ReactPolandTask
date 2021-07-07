@@ -1,5 +1,15 @@
-export const addTodoHelper = (todos, newTodo) => {
-  return [...todos, newTodo];
+const compare = (a, b) => {
+  const timestampA = a.timestamp;
+  const timestampB = b.timestamp;
+  const timeInMilisecondsA = Date.parse(timestampA);
+  const timeInMilisecondsB = Date.parse(timestampB);
+
+  return timeInMilisecondsA - timeInMilisecondsB;
+};
+
+export const addAndSortTodoHelper = (todos, newTodo) => {
+  todos.push(newTodo);
+  return todos.sort(compare);
 };
 
 export const editTodoHelper = (todos, editedTodo) => {

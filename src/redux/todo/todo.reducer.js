@@ -1,10 +1,10 @@
 import { TodoActionTypes } from './todo.types';
 
 import {
-  addTodoHelper,
   editTodoHelper,
   deleteTodoHelper,
   toggleCompleteTodoHelper,
+  addAndSortTodoHelper,
 } from './todo.utils';
 
 const INTITIAL_STATE = {
@@ -16,7 +16,7 @@ const todoReducer = (state = INTITIAL_STATE, action) => {
     case TodoActionTypes.ADD_TODO:
       return {
         ...state,
-        todos: addTodoHelper(state.todos, action.payload),
+        todos: addAndSortTodoHelper(state.todos, action.payload),
       };
     case TodoActionTypes.EDIT_TODO:
       return {

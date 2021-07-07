@@ -19,6 +19,8 @@ import useStyles from './Todo.styles';
 const Todo = ({ todo, deleteTodo, toggleCompleteTodo }) => {
   const classes = useStyles();
 
+  const date = todo.timestamp.split('T');
+
   const handleDelete = (e) => {
     const todoId = e.target.closest('button').id;
 
@@ -56,6 +58,9 @@ const Todo = ({ todo, deleteTodo, toggleCompleteTodo }) => {
             {todo.description}
           </Typography>
           <CardActions className={classes.linkContainer}>
+            <Typography variant="subtitle2" style={{ marginRight: '1rem' }}>
+              {date[0]}
+            </Typography>
             <Typography variant="button">
               <Link to={`/list/${todo.id}`} className={classes.link}>
                 View
