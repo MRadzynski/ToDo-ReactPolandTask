@@ -1,5 +1,7 @@
 import { TodoActionTypes } from './todo.types';
 
+import { addTodo, deleteTodo } from './todo.utils';
+
 const INTITIAL_STATE = {
   todos: [],
 };
@@ -9,7 +11,7 @@ const todoReducer = (state = INTITIAL_STATE, action) => {
     case TodoActionTypes.ADD_TODO:
       return {
         ...state,
-        todos: [...state.todos, action.payload],
+        todos: addTodo(state.todos, action.payload),
       };
     case TodoActionTypes.EDIT_TODO:
       return {
@@ -17,10 +19,7 @@ const todoReducer = (state = INTITIAL_STATE, action) => {
         todos: action.payload,
       };
     case TodoActionTypes.DELETE_TODO:
-      return {
-        ...state,
-        todos: action.payload,
-      };
+      return { ...state, todos: deleteTodo(state.todos, action.payload) };
     default:
       return state;
   }

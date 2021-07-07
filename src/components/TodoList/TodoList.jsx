@@ -14,7 +14,7 @@ const TodoList = ({ todos, children }) => {
       {children}
       <Grid container item direction="column">
         {todos?.map((todo) => (
-          <Todo todo={todo} />
+          <Todo key={todo.id} todo={todo} />
         ))}
       </Grid>
     </Grid>

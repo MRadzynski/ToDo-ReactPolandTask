@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import {
@@ -10,17 +11,21 @@ import {
   Typography,
 } from '@material-ui/core';
 
+import { deleteTodo } from '../../redux/todo/todo.actions';
+
 import useStyles from './Todo.styles';
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, deleteTodo }) => {
   const classes = useStyles();
 
   const handleDelete = (e) => {
-    console.log(e.target.closest('button').id);
+    const todoId = e.target.closest('button').id;
+    console.log(todoId);
+    deleteTodo(todoId);
   };
 
   return (
-    <Card key={todo.id} className={classes.card}>
+    <Card className={classes.card}>
       <CardContent className={classes.cardContainer}>
         <Checkbox disableRipple className={classes.checkbox} />
         <CardContent className={classes.contentContainer}>
@@ -53,4 +58,8 @@ const Todo = ({ todo }) => {
   );
 };
 
-export default Todo;
+const mapDispatchToProps = (dispatch) => ({
+  deleteTodo: (id) => dispatch(deleteTodo(id)),
+});
+
+export default connect(null, mapDispatchToProps)(Todo);
