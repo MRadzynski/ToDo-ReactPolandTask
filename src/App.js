@@ -6,6 +6,7 @@ import AddTodo from './pages/AddTodo/AddTodo.jsx';
 import EditTodo from './pages/EditTodo/EditTodo.jsx';
 import List from './pages/List/List.jsx';
 import PreviewTodo from './pages/PreviewTodo/PreviewTodo.jsx';
+import Settings from './pages/Settings/Settings.jsx';
 
 const App = () => {
   return (
@@ -21,11 +22,7 @@ const App = () => {
 
         <Route path="/list/:id/edit" component={EditTodo} />
 
-        <Route
-          exact
-          path="/settings"
-          render={() => <h1>There will be settings page</h1>}
-        />
+        <Route exact path="/settings" component={Settings} />
 
         <Route render={() => <h1>There will be 404 page</h1>} />
       </Switch>

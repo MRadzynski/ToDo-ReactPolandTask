@@ -39,8 +39,6 @@ const AddTodoForm = ({ addTodo, editTodo, todo, edit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(todoInfo);
-
     if (edit) {
       editTodo(todoInfo);
       history.push(`/list/${todoInfo.id}`);
