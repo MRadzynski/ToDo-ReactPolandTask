@@ -4,13 +4,13 @@ import { Grid } from '@material-ui/core';
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import AddTodoForm from '../../components/AddTodoForm/AddTodoForm';
+import AddEditTodoForm from '../../components/AddEditTodoForm/AddEditTodoForm';
 
 const AddTodo = () => {
   return (
     <Grid container>
       <Header title="Add ToDo" />
-      <AddTodoForm />
+      <AddEditTodoForm />
       <Footer />
     </Grid>
   );

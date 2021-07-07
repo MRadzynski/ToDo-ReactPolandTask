@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 
 import { Grid } from '@material-ui/core';
 
-import { selectTodoById } from '../../redux/todo/todo.selectors';
-
 import Header from '../../components/Header/Header';
-import TodoDetails from '../../components/TodoDetails/TodoDetails';
+import AddEditTodoForm from '../../components/AddEditTodoForm/AddEditTodoForm';
 import Footer from '../../components/Footer/Footer';
 
-const PreviewTodo = ({ todo }) => {
+import { selectTodoById } from '../../redux/todo/todo.selectors';
+
+const EditTodo = ({ todo }) => {
   return (
-    <Grid container>
-      <Header title="Todo Preview" />
-      <TodoDetails todo={todo} />
+    <Grid container direction="column">
+      <Header title="Edit Todo" />
+      <AddEditTodoForm todo={todo} edit />
       <Footer />
     </Grid>
   );
@@ -23,4 +23,4 @@ const mapStateToProps = (state, ownProps) => ({
   todo: selectTodoById(ownProps.match.params.id)(state),
 });
 
-export default connect(mapStateToProps)(PreviewTodo);
+export default connect(mapStateToProps)(EditTodo);

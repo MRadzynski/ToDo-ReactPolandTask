@@ -6,5 +6,5 @@ export const selectTodos = createSelector([selectTodo], (todo) => todo?.todos);
 
 export const selectTodoById = (id) =>
   createSelector([selectTodos], (todos) =>
-    todos.find((todo) => todo.id === id)
+    todos?.find((todo) => todo.id === id)
   );

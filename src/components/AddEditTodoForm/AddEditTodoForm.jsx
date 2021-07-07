@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router';
 
-import { addTodo } from '../../redux/todo/todo.actions';
+import { addTodo, editTodo } from '../../redux/todo/todo.actions';
 
+import { Grid } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import { Add } from '@material-ui/icons';
-import { Grid } from '@material-ui/core';
+import { Add, Edit } from '@material-ui/icons';
 
-import useStyles from './AddTodoForm.styles';
+import useStyles from './AddEditTodoForm.styles';
 
-const AddTodoForm = ({ addTodo }) => {
+const AddTodoForm = ({ addTodo, editTodo, todo, edit }) => {
   const classes = useStyles();
+  const history = useHistory();
 
   const [todoInfo, setTodoInfo] = useState({
     id: new Date().getTime().toString(),
@@ -22,6 +24,12 @@ const AddTodoForm = ({ addTodo }) => {
     done: false,
   });
 
+  useEffect(() => {
+    if (edit && todo) {
+      setTodoInfo(todo);
+    }
+  }, [edit, todo, setTodoInfo]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -31,15 +39,22 @@ const AddTodoForm = ({ addTodo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    addTodo(todoInfo);
-    setTodoInfo({
-      id: new Date().getTime().toString(),
-      name: '',
-      description: '',
-      comments: '',
-      timestamp: '',
-      done: false,
-    });
+    console.log(todoInfo);
+
+    if (edit) {
+      editTodo(todoInfo);
+      history.push(`/list/${todoInfo.id}`);
+    } else {
+      addTodo(todoInfo);
+      setTodoInfo({
+        id: new Date().getTime().toString(),
+        name: '',
+        description: '',
+        comments: '',
+        timestamp: '',
+        done: false,
+      });
+    }
   };
 
   return (
@@ -86,12 +101,12 @@ const AddTodoForm = ({ addTodo }) => {
         />
         <Button
           type="submit"
-          startIcon={<Add />}
+          startIcon={edit ? <Edit /> : <Add />}
           variant="contained"
           size="large"
           className={classes.button}
         >
-          Add ToDo
+          {edit ? 'EDIT TODO' : 'ADD TODO'}
         </Button>
       </form>
     </Grid>
@@ -100,6 +115,7 @@ const AddTodoForm = ({ addTodo }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   addTodo: (todo) => dispatch(addTodo(todo)),
+  editTodo: (todo) => dispatch(editTodo(todo)),
 });
 
 export default connect(null, mapDispatchToProps)(AddTodoForm);
