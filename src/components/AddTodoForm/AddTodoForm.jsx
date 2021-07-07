@@ -82,6 +82,7 @@ const AddTodoForm = ({ addTodo }) => {
           value={todoInfo.timestamp || ''}
           variant="outlined"
           type="datetime-local"
+          placeholder={'dd.mm.rrrr --:--'}
           onChange={handleChange}
           required
         />

@@ -4,11 +4,6 @@ const useStyles = makeStyles((theme) => ({
   constainer: {
     backgroundColor: theme.palette.success.light,
   },
-  main: {
-    height: '73vh',
-    margin: '1vh 0',
-    overflow: 'hidden scroll',
-  },
   button: {
     width: '5rem',
     height: '5rem',

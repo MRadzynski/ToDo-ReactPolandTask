@@ -1,30 +1,23 @@
 import React from 'react';
 
-import { Container } from '@material-ui/core';
-import { Card, CardContent } from '@material-ui/core';
-import { Typography } from '@material-ui/core';
-import Checkbox from '@material-ui/core/Checkbox';
+import { Grid } from '@material-ui/core';
+
+import Todo from '../Todo/Todo';
 
 import useStyles from './TodoList.styles';
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, children }) => {
   const classes = useStyles();
 
   return (
-    <Container className={classes.root}>
-      <Typography variant="h4">Nearest Todos</Typography>
-      {todos?.map((todo) => (
-        <Card key={todo.id} className={classes.card}>
-          <CardContent className={classes.cardContainer}>
-            <Checkbox />
-            <CardContent className={classes.textContainer}>
-              <Typography variant="h5">{todo.name}</Typography>
-              <Typography variant="subtitle2">{todo.description}</Typography>
-            </CardContent>
-          </CardContent>
-        </Card>
-      ))}
-    </Container>
+    <Grid item container direction="column" className={classes.root}>
+      {children}
+      <Grid container item direction="column">
+        {todos?.map((todo) => (
+          <Todo todo={todo} />
+        ))}
+      </Grid>
+    </Grid>
   );
 };
 

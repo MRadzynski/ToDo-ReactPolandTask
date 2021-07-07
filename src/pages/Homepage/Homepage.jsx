@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
@@ -28,9 +28,11 @@ const Homepage = ({ todos }) => {
           </IconButton>
         </Link>
       </Header>
-      <Grid item container direction="column" className={classes.main}>
-        <TodoList todos={todos} />
-      </Grid>
+      <TodoList todos={todos}>
+        <Typography variant="h4" style={{ margin: '2rem 0 1rem 2rem' }}>
+          Nearest Todos
+        </Typography>
+      </TodoList>
       <Footer />
     </Grid>
   );
