@@ -20,7 +20,7 @@ const Todo = ({ todo, deleteTodo }) => {
 
   const handleDelete = (e) => {
     const todoId = e.target.closest('button').id;
-    console.log(todoId);
+
     deleteTodo(todoId);
   };
 

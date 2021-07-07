@@ -43,7 +43,7 @@ const AddTodoForm = ({ addTodo }) => {
   };
 
   return (
-    <Grid item>
+    <Grid item container className={classes.root}>
       <form autoComplete="off" className={classes.form} onSubmit={handleSubmit}>
         <TextField
           name="name"
@@ -65,7 +65,6 @@ const AddTodoForm = ({ addTodo }) => {
           onChange={handleChange}
           required
         />
-
         <TextField
           name="comments"
           value={todoInfo.comments || ''}
@@ -76,7 +75,6 @@ const AddTodoForm = ({ addTodo }) => {
           label="Comments"
           onChange={handleChange}
         />
-
         <TextField
           name="timestamp"
           value={todoInfo.timestamp || ''}
@@ -86,7 +84,6 @@ const AddTodoForm = ({ addTodo }) => {
           onChange={handleChange}
           required
         />
-
         <Button
           type="submit"
           startIcon={<Add />}

@@ -1,6 +1,10 @@
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100vw',
+    margin: '0 auto',
+  },
   form: {
     width: '100vw',
     height: '73vh',
@@ -9,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: '1rem',
   },
   button: {

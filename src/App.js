@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Homepage from './pages/Homepage/Homepage.jsx';
 import AddTodo from './pages/AddTodo/AddTodo.jsx';
 import List from './pages/List/List.jsx';
+import PreviewTodo from './pages/PreviewTodo/PreviewTodo.jsx';
 
 const App = () => {
   return (
@@ -15,11 +16,7 @@ const App = () => {
 
         <Route exact path="/add-todo" component={AddTodo} />
 
-        <Route
-          exact
-          path="/list/:id"
-          render={() => <h1>There will todo preview page</h1>}
-        />
+        <Route exact path="/list/:id" component={PreviewTodo} />
 
         <Route
           path="/list/:id/edit"
