@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   cardContainer: {
     width: '100%',
     display: 'flex',
+
     '&:last-child': {
       padding: '0.5rem',
     },
@@ -44,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     color: theme.palette.secondary.main,
     textAlign: 'center',
+  },
+  textCrossed: {
+    textDecoration: 'line-through',
   },
 }));
 

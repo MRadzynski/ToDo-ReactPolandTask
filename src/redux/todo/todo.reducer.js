@@ -1,6 +1,11 @@
 import { TodoActionTypes } from './todo.types';
 
-import { addTodoHelper, editTodoHelper, deleteTodoHelper } from './todo.utils';
+import {
+  addTodoHelper,
+  editTodoHelper,
+  deleteTodoHelper,
+  toggleCompleteTodoHelper,
+} from './todo.utils';
 
 const INTITIAL_STATE = {
   todos: [],
@@ -20,6 +25,11 @@ const todoReducer = (state = INTITIAL_STATE, action) => {
       };
     case TodoActionTypes.DELETE_TODO:
       return { ...state, todos: deleteTodoHelper(state.todos, action.payload) };
+    case TodoActionTypes.TOGGLE_COMPLETE_TODO:
+      return {
+        ...state,
+        todos: toggleCompleteTodoHelper(state.todos, action.payload),
+      };
     default:
       return state;
   }
