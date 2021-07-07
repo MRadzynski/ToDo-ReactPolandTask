@@ -7,6 +7,7 @@ import EditTodo from './pages/EditTodo/EditTodo.jsx';
 import List from './pages/List/List.jsx';
 import PreviewTodo from './pages/PreviewTodo/PreviewTodo.jsx';
 import Settings from './pages/Settings/Settings.jsx';
+import NotFound from './components/NotFound/NotFound.jsx';
 
 const App = () => {
   return (
@@ -24,7 +25,7 @@ const App = () => {
 
         <Route exact path="/settings" component={Settings} />
 
-        <Route render={() => <h1>There will be 404 page</h1>} />
+        <Route component={NotFound} />
       </Switch>
     </>
   );

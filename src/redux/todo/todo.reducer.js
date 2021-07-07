@@ -3,17 +3,7 @@ import { TodoActionTypes } from './todo.types';
 import { addTodoHelper, editTodoHelper, deleteTodoHelper } from './todo.utils';
 
 const INTITIAL_STATE = {
-  todos: [
-    {
-      id: '1234',
-      name: 'Prepare for an IT exam',
-      description:
-        'Exam will contain: network routing, C# programming and lots of useless math!',
-      comments: 'This exam is very important I need to pass it!',
-      timestamp: '2021-07-12T13:50',
-      done: false,
-    },
-  ],
+  todos: [],
 };
 
 const todoReducer = (state = INTITIAL_STATE, action) => {
