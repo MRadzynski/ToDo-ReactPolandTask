@@ -28,7 +28,7 @@ const Homepage = ({ todos }) => {
           </IconButton>
         </Link>
       </Header>
-      <TodoList todos={todos}>
+      <TodoList todos={todos} limit={3}>
         <Typography variant="h4" style={{ margin: '2rem 0 1rem 2rem' }}>
           Nearest Todos
         </Typography>
