@@ -34,7 +34,16 @@ const TodoDetails = ({ deleteTodo, todo }) => {
   };
 
   return (
-    <Grid container item direction="column" className={classes.root}>
+    <Grid
+      container
+      item
+      direction="column"
+      className={classes.root}
+      xs={10}
+      sm={8}
+      md={6}
+      lg={4}
+    >
       <Grid container item direction="column" className={classes.contentGroup}>
         <Paper className={classes.paper}>
           <Typography variant={'h5'} className={classes.groupTitle}>
