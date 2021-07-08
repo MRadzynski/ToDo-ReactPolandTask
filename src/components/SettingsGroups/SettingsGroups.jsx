@@ -6,12 +6,11 @@ import {
   Paper,
   Typography,
   TextField,
-  Select,
-  MenuItem,
+  Switch,
   Checkbox,
 } from '@material-ui/core';
 
-import useStyles from './Settings.styles';
+import useStyles from './SettingsGroups.styles';
 
 import {
   setDisplayName,
@@ -50,7 +49,7 @@ const SettingsGroups = ({
   const handleThemeChange = (e) => {
     if (theme === e.target.value) return;
 
-    setTheme(e.target.value);
+    setTheme(!theme);
   };
 
   const handleHideCompletedChange = () => {
@@ -58,7 +57,16 @@ const SettingsGroups = ({
   };
 
   return (
-    <Grid container item direction="column" className={classes.root}>
+    <Grid
+      container
+      item
+      direction="column"
+      className={classes.root}
+      xs={10}
+      sm={8}
+      md={6}
+      lg={4}
+    >
       <Grid container item className={classes.settingGroup}>
         <Paper className={classes.contentContainer}>
           <Typography>Display Name</Typography>
@@ -74,16 +82,13 @@ const SettingsGroups = ({
 
         <Grid container item className={classes.settingsGroup}>
           <Paper className={classes.contentContainer}>
-            <Typography>Theme</Typography>
-            <Select
+            <Typography>Dark Mode</Typography>
+            <Switch
               name="theme"
-              value={theme || 'light'}
+              checked={theme}
               className={classes.themeSelect}
               onChange={handleThemeChange}
-            >
-              <MenuItem value="light">Light</MenuItem>
-              <MenuItem value="dark">Dark</MenuItem>
-            </Select>
+            />
           </Paper>
         </Grid>
 

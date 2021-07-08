@@ -1,15 +1,14 @@
 import { makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100vw',
-    height: '73vh',
-    margin: '1vh 0',
+    height: theme.heightVh ? theme.heightVh * 73 : '73vh',
+    margin: theme.heightVh ? `${theme.heightVh}px auto` : '1vh  auto',
   },
   settingGroup: {
-    width: '90vw',
-    margin: '1rem auto 0 auto',
     gap: '2rem',
+    margin: '1rem auto 0 auto',
   },
   contentContainer: {
     width: '100%',
@@ -17,10 +16,9 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '1rem',
+    borderRadius: '1rem',
   },
-  themeSelect: {
-    width: '45%',
-  },
+
   textField: {
     width: '45%',
   },

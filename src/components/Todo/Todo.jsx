@@ -68,7 +68,7 @@ const Todo = ({ todo, hideCompletedTodos, deleteTodo, toggleCompleteTodo }) => {
           </Typography>
 
           <CardActions className={classes.linkContainer}>
-            <Typography variant="subtitle2" style={{ marginRight: '1rem' }}>
+            <Typography variant="subtitle2" className={classes.date}>
               {date[0]}
             </Typography>
 

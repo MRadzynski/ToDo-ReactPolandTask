@@ -18,7 +18,9 @@ const NotFound = () => {
           alt="dog"
           className={classes.image}
         />
-        <Typography variant={'h4'}>A Dog Ate this Page!</Typography>
+        <Typography variant="h4" className={classes.text}>
+          A Dog Ate this Page!
+        </Typography>
       </Grid>
       <Footer />
     </Grid>

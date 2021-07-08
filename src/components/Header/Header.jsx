@@ -8,7 +8,7 @@ const Header = ({ title, children }) => {
   const classes = useStyles();
 
   return (
-    <Grid container item align="start" className={classes.header}>
+    <Grid container item className={classes.header}>
       <Typography variant="h4" className={classes.title}>
         {title}
       </Typography>

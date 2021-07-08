@@ -7,22 +7,27 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '100vw',
-    height: '73vh',
+    height: theme.heightVh ? theme.heightVh * 73 : '73vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     gap: '1rem',
-    margin: '1vh 0',
+    margin: theme.heightVh ? `${theme.heightVh}px auto` : '1vh  auto',
     padding: '3rem 2rem',
   },
   button: {
-    width: '50vw',
     marginTop: '2rem',
     color: 'white',
-    backgroundColor: theme.palette.success.main,
+    backgroundColor:
+      theme?.palette?.type === 'dark'
+        ? theme.palette.primary.main
+        : theme.palette.primary.light,
     '&:hover': {
-      backgroundColor: theme.palette.success.main,
+      backgroundColor:
+        theme?.palette?.type === 'dark'
+          ? theme.palette.primary.main
+          : theme.palette.primary.light,
     },
   },
 }));

@@ -1,9 +1,9 @@
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100vw',
-    height: '100vh',
+    height: theme.heightVh ? theme.heightVh * 100 : '100vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

@@ -5,9 +5,9 @@ export const setDisplayName = (displayName) => ({
   payload: displayName,
 });
 
-export const setTheme = (theme) => ({
+export const setTheme = (decision) => ({
   type: UserActionTypes.SET_THEME,
-  payload: theme,
+  payload: decision,
 });
 
 export const setHideCompletedTodos = (decision) => ({

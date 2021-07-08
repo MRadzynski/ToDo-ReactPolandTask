@@ -2,7 +2,7 @@ import { UserActionTypes } from './user.types';
 
 const INITIAL_STATE = {
   displayName: '',
-  theme: 'light',
+  theme: false,
   hideCompletedTodos: false,
 };
 

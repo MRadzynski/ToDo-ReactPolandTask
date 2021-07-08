@@ -56,7 +56,7 @@ const AddTodoForm = ({ addTodo, editTodo, todo, edit }) => {
   };
 
   return (
-    <Grid item container className={classes.root}>
+    <Grid item container className={classes.root} sm={8} md={6} lg={4}>
       <form autoComplete="off" className={classes.form} onSubmit={handleSubmit}>
         <TextField
           name="name"
@@ -97,15 +97,17 @@ const AddTodoForm = ({ addTodo, editTodo, todo, edit }) => {
           onChange={handleChange}
           required
         />
-        <Button
-          type="submit"
-          startIcon={edit ? <Edit /> : <Add />}
-          variant="contained"
-          size="large"
-          className={classes.button}
-        >
-          {edit ? 'EDIT TODO' : 'ADD TODO'}
-        </Button>
+        <Grid item container direction="column" xs={8} md={6}>
+          <Button
+            type="submit"
+            startIcon={edit ? <Edit /> : <Add />}
+            variant="contained"
+            size="large"
+            className={classes.button}
+          >
+            {edit ? 'EDIT TODO' : 'ADD TODO'}
+          </Button>
+        </Grid>
       </form>
     </Grid>
   );

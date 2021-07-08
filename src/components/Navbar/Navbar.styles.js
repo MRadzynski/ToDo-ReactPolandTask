@@ -8,11 +8,14 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
   },
   menuItem: {
+    minWidth: '3rem',
+    minHeight: '3rem',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    color: 'white',
+    padding: '0.5rem',
     borderRadius: '50%',
+    color: 'white',
     backgroundColor: '#74B377',
     '&:hover': {
       backgroundColor: '#74B377',

@@ -21,7 +21,7 @@ const Homepage = ({ todos, displayName }) => {
   const classes = useStyles();
 
   return (
-    <Grid container direction="column" className={classes.container}>
+    <Grid container direction="column">
       <Header title={`Hi ${displayName || ''}!`}>
         <Link to="/add-todo">
           <IconButton className={classes.button}>
@@ -30,7 +30,7 @@ const Homepage = ({ todos, displayName }) => {
         </Link>
       </Header>
       <TodoList todos={todos} limit={3}>
-        <Typography variant="h4" style={{ margin: '2rem 0 1rem 2rem' }}>
+        <Typography variant="h4" className={classes.title}>
           Nearest Todos
         </Typography>
       </TodoList>
