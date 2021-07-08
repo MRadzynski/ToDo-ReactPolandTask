@@ -22,7 +22,7 @@ const Homepage = ({ todos, displayName }) => {
 
   return (
     <Grid container direction="column" className={classes.container}>
-      <Header title={`Hi ${displayName}!`}>
+      <Header title={`Hi ${displayName || ''}!`}>
         <Link to="/add-todo">
           <IconButton className={classes.button}>
             <AddIcon style={{ color: green[500] }} fontSize="large" />

@@ -66,7 +66,7 @@ const SettingsGroups = ({
             name="userName"
             variant="outlined"
             className={classes.textField}
-            value={userName}
+            value={userName || ''}
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -77,7 +77,7 @@ const SettingsGroups = ({
             <Typography>Theme</Typography>
             <Select
               name="theme"
-              value={theme}
+              value={theme || 'light'}
               className={classes.themeSelect}
               onChange={handleThemeChange}
             >
