@@ -2,11 +2,14 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   card: {
+    width: '100%',
     display: 'flex',
     alignItems: 'center',
     margin: '1rem auto',
-    width: '90vw',
     borderRadius: '20px',
+  },
+  cardHidden: {
+    display: 'none',
   },
   checkbox: {
     '&&:hover': {
@@ -16,34 +19,44 @@ const useStyles = makeStyles((theme) => ({
   cardContainer: {
     width: '100%',
     display: 'flex',
+
     '&:last-child': {
       padding: '0.5rem',
     },
   },
   contentContainer: {
-    display: 'flex',
     width: '80%',
-    margin: '0 auto',
+    display: 'flex',
     flexDirection: 'column',
-    gap: '0.2rem',
-    padding: '0.5rem',
     flexWrap: 'wrap',
+    gap: '0.2rem',
+    margin: '0 auto',
+    padding: '0.5rem',
     '&:last-child': {
       padding: '0.5rem',
     },
   },
   linkContainer: {
     width: '100%',
-    padding: '0.5rem 0 0 0',
     display: 'flex',
     justifyContent: 'flex-end',
     gap: '0.5rem',
+    position: 'relative',
+    padding: '0.5rem 0 0 0',
+  },
+  date: {
+    position: 'absolute',
+    left: '0',
+    marginRight: '1rem',
   },
   link: {
     padding: '0',
-    textDecoration: 'none',
-    color: theme.palette.secondary.main,
+    color: theme?.palette?.secondary?.main,
     textAlign: 'center',
+    textDecoration: 'none',
+  },
+  textCrossed: {
+    textDecoration: 'line-through',
   },
 }));
 

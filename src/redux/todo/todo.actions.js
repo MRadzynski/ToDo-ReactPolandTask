@@ -14,3 +14,8 @@ export const deleteTodo = (id) => ({
   type: TodoActionTypes.DELETE_TODO,
   payload: id,
 });
+
+export const toggleCompleteTodo = (id) => ({
+  type: TodoActionTypes.TOGGLE_COMPLETE_TODO,
+  payload: id,
+});

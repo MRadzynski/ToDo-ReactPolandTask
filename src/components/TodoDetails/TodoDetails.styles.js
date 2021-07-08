@@ -1,13 +1,13 @@
 import { makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100vw',
-    height: '73vh',
+    height: theme.heightVh ? theme.heightVh * 73 : '73vh',
     display: 'flex',
     flexWrap: 'nowrap',
     gap: '1rem',
-    margin: '1vh auto',
+    margin: theme.heightVh ? `${theme.heightVh}px 0` : '1vh  0',
     padding: '0.5rem 0',
     overflow: 'hidden scroll',
   },
@@ -32,7 +32,10 @@ const useStyles = makeStyles(() => ({
   datetime: {
     padding: '0.3rem',
     borderRadius: '0.5rem',
-    backgroundColor: '#ddd',
+    backgroundColor:
+      theme?.palette.type === 'dark'
+        ? theme?.palette.grey[500]
+        : theme?.palette.grey[300],
   },
   iconContainer: {
     display: 'flex',

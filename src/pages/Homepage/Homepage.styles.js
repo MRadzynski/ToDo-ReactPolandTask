@@ -1,17 +1,18 @@
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  constainer: {
-    backgroundColor: theme.palette.success.light,
+  title: {
+    margin: '2rem 0 1rem 0',
+    color: theme?.palette?.text?.primary,
   },
   button: {
     width: '5rem',
     height: '5rem',
-    backgroundColor: '#ddd',
     position: 'absolute',
-    bottom: '-2.5rem',
     right: '3rem',
+    bottom: '-2.5rem',
     borderRadius: '50%',
+    backgroundColor: '#ddd',
     boxShadow: '0 4px 4px rgba(0,0,0,0.25)',
     '&:hover': {
       backgroundColor: '#ddd',

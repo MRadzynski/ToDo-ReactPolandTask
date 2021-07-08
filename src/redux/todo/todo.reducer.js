@@ -1,19 +1,14 @@
 import { TodoActionTypes } from './todo.types';
 
-import { addTodoHelper, editTodoHelper, deleteTodoHelper } from './todo.utils';
+import {
+  editTodoHelper,
+  deleteTodoHelper,
+  toggleCompleteTodoHelper,
+  addAndSortTodoHelper,
+} from './todo.utils';
 
 const INTITIAL_STATE = {
-  todos: [
-    {
-      id: '1234',
-      name: 'Prepare for an IT exam',
-      description:
-        'Exam will contain: network routing, C# programming and lots of useless math!',
-      comments: 'This exam is very important I need to pass it!',
-      timestamp: '2021-07-12T13:50',
-      done: false,
-    },
-  ],
+  todos: [],
 };
 
 const todoReducer = (state = INTITIAL_STATE, action) => {
@@ -21,7 +16,7 @@ const todoReducer = (state = INTITIAL_STATE, action) => {
     case TodoActionTypes.ADD_TODO:
       return {
         ...state,
-        todos: addTodoHelper(state.todos, action.payload),
+        todos: addAndSortTodoHelper(state.todos, action.payload),
       };
     case TodoActionTypes.EDIT_TODO:
       return {
@@ -30,6 +25,11 @@ const todoReducer = (state = INTITIAL_STATE, action) => {
       };
     case TodoActionTypes.DELETE_TODO:
       return { ...state, todos: deleteTodoHelper(state.todos, action.payload) };
+    case TodoActionTypes.TOGGLE_COMPLETE_TODO:
+      return {
+        ...state,
+        todos: toggleCompleteTodoHelper(state.todos, action.payload),
+      };
     default:
       return state;
   }
