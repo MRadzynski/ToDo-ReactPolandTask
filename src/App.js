@@ -8,25 +8,28 @@ import List from './pages/List/List.jsx';
 import PreviewTodo from './pages/PreviewTodo/PreviewTodo.jsx';
 import Settings from './pages/Settings/Settings.jsx';
 import NotFound from './components/NotFound/NotFound.jsx';
+import ErrorBourdary from './components/ErrorBoundary/ErrorBoundary';
 
 const App = () => {
   return (
     <>
-      <Switch>
-        <Route exact path="/" component={Homepage} />
+      <ErrorBourdary>
+        <Switch>
+          <Route exact path="/" component={Homepage} />
 
-        <Route exact path="/list" component={List} />
+          <Route exact path="/list" component={List} />
 
-        <Route exact path="/add-todo" component={AddTodo} />
+          <Route exact path="/add-todo" component={AddTodo} />
 
-        <Route exact path="/list/:id" component={PreviewTodo} />
+          <Route exact path="/list/:id" component={PreviewTodo} />
 
-        <Route path="/list/:id/edit" component={EditTodo} />
+          <Route path="/list/:id/edit" component={EditTodo} />
 
-        <Route exact path="/settings" component={Settings} />
+          <Route exact path="/settings" component={Settings} />
 
-        <Route component={NotFound} />
-      </Switch>
+          <Route component={NotFound} />
+        </Switch>
+      </ErrorBourdary>
     </>
   );
 };
