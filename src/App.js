@@ -18,6 +18,10 @@ const PreviewTodo = lazy(() => import('./pages/PreviewTodo/PreviewTodo'));
 const EditTodo = lazy(() => import('./pages/EditTodo/EditTodo'));
 const Settings = lazy(() => import('./pages/Settings/Settings'));
 
+window.addEventListener('orientationchange', () => {
+  window.location.reload();
+});
+
 const App = ({ theme }) => {
   const vh = window.innerHeight * 0.01;
 
