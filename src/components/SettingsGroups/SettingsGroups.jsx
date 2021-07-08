@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
 import {
   Grid,
   Paper,
@@ -11,28 +13,48 @@ import {
 
 import useStyles from './Settings.styles';
 
-const SettingsGroups = () => {
+import {
+  setDisplayName,
+  setTheme,
+  setHideCompletedTodos,
+} from '../../redux/user/user.actions';
+
+import {
+  selectTheme,
+  selectHideCompletedTodos,
+  selectDisplayName,
+} from '../../redux/user/user.selectors';
+
+const SettingsGroups = ({
+  displayName,
+  theme,
+  hideCompletedTodos,
+  setDisplayName,
+  setTheme,
+  setHideCompletedTodos,
+}) => {
   const classes = useStyles();
 
-  const [displayName, setDisplayName] = useState('');
-  const [theme, setTheme] = useState('light');
-  const [hideCompleted, setHideCompleted] = useState(false);
+  const [userName, setUserName] = useState(displayName);
 
   const handleChange = (e) => {
-    setDisplayName(e.target.value);
+    setUserName(e.target.value);
   };
 
-  const handleBlur = (e) => {
-    if (displayName === e.target.value) return;
+  const handleBlur = () => {
+    if (userName === displayName) return;
+
+    setDisplayName(userName);
   };
 
   const handleThemeChange = (e) => {
     if (theme === e.target.value) return;
+
     setTheme(e.target.value);
   };
 
   const handleHideCompletedChange = () => {
-    setHideCompleted(!hideCompleted);
+    setHideCompletedTodos(!hideCompletedTodos);
   };
 
   return (
@@ -41,10 +63,10 @@ const SettingsGroups = () => {
         <Paper className={classes.contentContainer}>
           <Typography>Display Name</Typography>
           <TextField
-            name="displayName"
+            name="userName"
             variant="outlined"
             className={classes.textField}
-            value={displayName}
+            value={userName}
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -70,7 +92,7 @@ const SettingsGroups = () => {
             <Typography>Hide completed todos</Typography>
             <Checkbox
               name="hideComplete"
-              defaultValue={hideCompleted}
+              checked={hideCompletedTodos}
               onChange={handleHideCompletedChange}
             />
           </Paper>
@@ -80,4 +102,17 @@ const SettingsGroups = () => {
   );
 };
 
-export default SettingsGroups;
+const mapStateToProps = (state) => ({
+  displayName: selectDisplayName(state),
+  theme: selectTheme(state),
+  hideCompletedTodos: selectHideCompletedTodos(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setDisplayName: (displayName) => dispatch(setDisplayName(displayName)),
+  setTheme: (theme) => dispatch(setTheme(theme)),
+  setHideCompletedTodos: (decision) =>
+    dispatch(setHideCompletedTodos(decision)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsGroups);

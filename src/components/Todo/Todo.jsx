@@ -14,9 +14,11 @@ import {
 
 import { deleteTodo, toggleCompleteTodo } from '../../redux/todo/todo.actions';
 
+import { selectHideCompletedTodos } from '../../redux/user/user.selectors';
+
 import useStyles from './Todo.styles';
 
-const Todo = ({ todo, deleteTodo, toggleCompleteTodo }) => {
+const Todo = ({ todo, hideCompletedTodos, deleteTodo, toggleCompleteTodo }) => {
   const classes = useStyles();
 
   const date = todo.timestamp.split('T');
@@ -34,7 +36,11 @@ const Todo = ({ todo, deleteTodo, toggleCompleteTodo }) => {
   };
 
   return (
-    <Card className={classes.card}>
+    <Card
+      className={
+        hideCompletedTodos && todo.done ? classes.cardHidden : classes.card
+      }
+    >
       <CardContent className={classes.cardContainer}>
         <Checkbox
           id={todo.id}
@@ -43,6 +49,7 @@ const Todo = ({ todo, deleteTodo, toggleCompleteTodo }) => {
           className={classes.checkbox}
           onClick={handleCompleteTodo}
         />
+
         <CardContent className={classes.contentContainer}>
           <Typography
             variant="h6"
@@ -50,27 +57,33 @@ const Todo = ({ todo, deleteTodo, toggleCompleteTodo }) => {
           >
             {todo.name}
           </Typography>
+
           <Divider />
+
           <Typography
             variant="subtitle2"
             className={todo.done ? classes.textCrossed : null}
           >
             {todo.description}
           </Typography>
+
           <CardActions className={classes.linkContainer}>
             <Typography variant="subtitle2" style={{ marginRight: '1rem' }}>
               {date[0]}
             </Typography>
+
             <Typography variant="button">
               <Link to={`/list/${todo.id}`} className={classes.link}>
                 View
               </Link>
             </Typography>
+
             <Typography variant="button">
               <Link to={`/list/${todo.id}/edit`} className={classes.link}>
                 Edit
               </Link>
             </Typography>
+
             <Typography>
               <Button
                 id={todo.id}
@@ -87,9 +100,13 @@ const Todo = ({ todo, deleteTodo, toggleCompleteTodo }) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  hideCompletedTodos: selectHideCompletedTodos(state),
+});
+
 const mapDispatchToProps = (dispatch) => ({
   deleteTodo: (id) => dispatch(deleteTodo(id)),
   toggleCompleteTodo: (id) => dispatch(toggleCompleteTodo(id)),
 });
 
-export default connect(null, mapDispatchToProps)(Todo);
+export default connect(mapStateToProps, mapDispatchToProps)(Todo);

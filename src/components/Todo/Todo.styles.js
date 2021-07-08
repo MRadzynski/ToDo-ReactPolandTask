@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
     width: '90vw',
     borderRadius: '20px',
   },
+  cardHidden: {
+    display: 'none',
+  },
   checkbox: {
     '&&:hover': {
       backgroundColor: 'transparent',
